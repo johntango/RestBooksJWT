@@ -1,0 +1,19 @@
+version: "3.4"
+
+services:
+  authserver:
+    image: jrwtango/authserver
+    networks:
+      - localnet
+    ports:
+      - "3000:3000"
+  books:
+    depends_on:
+      - authserver
+    image: jrwtango/books
+    networks:
+      - localnet
+    ports:
+      - "4000:4000"
+networks:
+  localnet:
